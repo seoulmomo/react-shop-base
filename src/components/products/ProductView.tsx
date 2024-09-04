@@ -12,13 +12,11 @@ function ProductView() {
   const params = useParams();
   const ProductsLoadable = useRecoilValueLoadable<IProduct[]>(productsList);
   const cartListLoadable = useRecoilValueLoadable<ICartItems[]>(cartList);
-  const cartItems: ICartItems[] = cartListLoadable.state === "hasValue" ? cartListLoadable.contents : [];
-  console.log(cartState);
+  // const cartItems: ICartItems[] = cartListLoadable.state === "hasValue" ? cartListLoadable.contents : [];
   let products: IProduct[] = "hasValue" === ProductsLoadable.state ? ProductsLoadable.contents : [];
   const product = products.filter((item) => item.id == Number(params.id));
 
   const [cart, setCart] = useRecoilState<ICartState>(cartState);
-
   const addToCartHandler = (id: number) => {
     setCart(addToCart(cart, id));
   };

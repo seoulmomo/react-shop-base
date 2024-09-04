@@ -97,15 +97,17 @@ export const addToCart = (cart: ICartState, id: number) => {
   return { ...cart, [id]: { id, count: cartState[id].count } };
 };
 // removeFromCart는 참고 하세요.
+
 export const removeFromCart = (cart: ICartState, id: number) => {
   const tempCart = { ...cart };
   if (tempCart[id].count === 1) {
     delete tempCart[id];
+    delete cartState[id];
     return tempCart;
   } else {
+    cartState[id].count--;
     return { ...tempCart, [id]: { id: id, count: cart[id].count - 1 } };
   }
-  // useCartLoad();
 };
 
 /**

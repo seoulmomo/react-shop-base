@@ -9,10 +9,11 @@ import ProductViewLoad from "../products/ProductViewLoad";
 
 const CartView = (): JSX.Element => {
   const totalPrice = useRecoilValueLoadable(cartTotal).contents || 0;
-  const cartItems = useRecoilValueLoadable(cartList).contents;
+  const cartListLoadable = useRecoilValueLoadable<ICartItems[]>(cartList);
+  // const cartItems = useRecoilValueLoadable(cartList).contents;
+  const cartItems: ICartItems[] = cartListLoadable.state === "hasValue" ? cartListLoadable.contents : [];
 
   if (useRecoilValueLoadable(cartList).state === "loading") return <ProductViewLoad />;
-
   return (
     <>
       <BreadCrumb category="홈" crumb="장바구니" />

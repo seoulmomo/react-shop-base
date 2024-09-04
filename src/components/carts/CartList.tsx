@@ -10,8 +10,6 @@ type Item = {
 const CartList = ({ data = { id: "", title: "", price: 0, count: 0, image: "" } }: Item): JSX.Element => {
   // Recoil을 사용해서 cart데이터를 가져오는 예제입니다.
   const [cart, setCart] = useRecoilState<ICartState>(cartState);
-  console.log(data);
-  console.log(cart);
 
   // store/cart.ts를 참고하세요.
   const removeFromCartHandler = (id: number) => {

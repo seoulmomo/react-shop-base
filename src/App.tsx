@@ -11,7 +11,7 @@ const App = (): JSX.Element => {
   const closeOverlay = () => {
     $hamburger.current?.click();
   };
-  useCartLoad();
+  useCartLoad;
   return (
     <BrowserRouter>
       <input type="checkbox" id="side-menu" className="drawer-toggle" ref={$hamburger} />
